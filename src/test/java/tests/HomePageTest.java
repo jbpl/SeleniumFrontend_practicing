@@ -15,7 +15,7 @@ class HomePageTest extends BaseTest {
     private PopularItemsPage popularItemsPage;
 
     @BeforeEach
-    public void SetupTest() {
+    public void setupTest() {
         driver = new ChromeDriver();
         driver.get(BASE_URL);
         Assertions.assertThat(driver.getTitle()).isEqualTo(PageTitleUtils.HOME_PAGE_TITLE);
