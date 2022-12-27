@@ -3,12 +3,13 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WomenPage extends BasePage{
+public class WomenPage extends BasePage {
 
     public WomenPage(WebDriver driver) {
         super(driver);
@@ -18,6 +19,8 @@ public class WomenPage extends BasePage{
     List<WebElement> productPricesList;
 
     public List<BigDecimal> getProductPricesList() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(productPricesList));
+
         return productPricesList.stream()
                 .map(WebElement::getText)
                 .map(el -> el.replaceAll("[^0-9.]", ""))
@@ -25,8 +28,8 @@ public class WomenPage extends BasePage{
                 .collect(Collectors.toList());
     }
 
-    public boolean isAllPricesAboveZero(){
+    public boolean isAllPricesAboveZero() {
         return getProductPricesList().stream()
-// //
+                .allMatch(el -> el.compareTo(BigDecimal.ZERO) > 0);
     }
 }
