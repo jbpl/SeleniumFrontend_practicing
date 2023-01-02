@@ -27,9 +27,4 @@ public class WomenPage extends BasePage {
                 .map(BigDecimal::new)
                 .collect(Collectors.toList());
     }
-
-    public boolean isEachPriceGreaterThanZero() {
-        return getProductPricesList().stream()
-                .allMatch(el -> el.compareTo(BigDecimal.ZERO) > 0);
-    }
 }

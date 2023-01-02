@@ -9,6 +9,9 @@ import tests.BaseTest;
 import utils.PageTitleUtils;
 import utils.SearchQueryUtils;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchQueryTest extends BaseTest {
@@ -37,6 +40,8 @@ public class SearchQueryTest extends BaseTest {
         assertThat(searchResultsPage.getSearchResultsTitle()).containsIgnoringCase(searchedTerm);
 
         assertThat(searchResultsPage.doesEachProductNameContainTheSearchedTerm(searchedTerm)).isTrue();
-        assertThat(searchResultsPage.isEachPriceGreaterThanZero()).isTrue();
+
+        List<BigDecimal> pricesList = searchResultsPage.getProductPricesList();
+        assertThat(searchResultsPage.isEachPriceGreaterThanZero(pricesList)).isTrue();
     }
 }

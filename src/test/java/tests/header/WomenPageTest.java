@@ -1,6 +1,5 @@
 package tests.header;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,6 +7,11 @@ import pages.TopMenuPage;
 import pages.WomenPage;
 import tests.BaseTest;
 import utils.PageTitleUtils;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class WomenPageTest extends BaseTest {
     private TopMenuPage topMenuPage;
@@ -17,16 +21,17 @@ public class WomenPageTest extends BaseTest {
     public void setupTest() {
         driver = new ChromeDriver();
         driver.get(BASE_URL);
-        Assertions.assertThat(driver.getTitle()).isEqualTo(PageTitleUtils.HOME_PAGE_TITLE);
+        assertThat(driver.getTitle()).isEqualTo(PageTitleUtils.HOME_PAGE_TITLE);
 
         topMenuPage = new TopMenuPage(driver);
         womenPage = new WomenPage(driver);
     }
 
     @Test
-    void shouldNotShowPricesLessThanOrEqualToZeroTest() {
-     topMenuPage.clickOnWomenPageLink();
+    void shouldShowPricesGreaterThanZero() {
+        topMenuPage.clickOnWomenPageLink();
 
-     Assertions.assertThat(womenPage.isEachPriceGreaterThanZero()).isTrue();
+        List<BigDecimal> pricesList = womenPage.getProductPricesList();
+        assertThat(womenPage.isEachPriceGreaterThanZero(pricesList)).isTrue();
     }
 }
