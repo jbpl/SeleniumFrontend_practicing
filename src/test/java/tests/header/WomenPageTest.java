@@ -27,6 +27,6 @@ public class WomenPageTest extends BaseTest {
     void shouldNotShowPricesLessThanOrEqualToZeroTest() {
      topMenuPage.clickOnWomenPageLink();
 
-     Assertions.assertThat(womenPage.isAllPricesAboveZero()).isTrue();
+     Assertions.assertThat(womenPage.isEachPriceGreaterThanZero()).isTrue();
     }
 }
