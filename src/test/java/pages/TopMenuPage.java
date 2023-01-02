@@ -22,6 +22,9 @@ public class TopMenuPage extends BasePage {
     @FindBy(name = "submit_search")
     WebElement searchButton;
 
+    @FindBy(xpath = "//*[@class=\"login\"]")
+    WebElement signInButton;
+
     public void clickOnContactUsLink() {
         contactUsLink.click();
     }
@@ -36,5 +39,9 @@ public class TopMenuPage extends BasePage {
 
     public void clickOnSearchButton() {
         searchButton.click();
+    }
+
+    public void clickOnSignInButton() {
+        signInButton.click();
     }
 }
