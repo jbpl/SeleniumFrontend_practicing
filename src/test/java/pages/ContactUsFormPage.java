@@ -1,11 +1,9 @@
 package pages;
 
 import model.ContactUsMessage;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ContactUsFormPage extends BasePage {
@@ -50,17 +48,6 @@ public class ContactUsFormPage extends BasePage {
 
     public void enterEmail(String email) {
         emailInputBox.sendKeys(email);
-    }
-
-    public boolean isElementDisplayed(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-
-        boolean isDisplayed = false;
-        try {
-            isDisplayed = element.isDisplayed();
-        } catch (NoSuchElementException e) {
-        }
-        return isDisplayed;
     }
 
     public void sendValidContactUsForm(ContactUsMessage message) {

@@ -25,6 +25,9 @@ public class TopMenuPage extends BasePage {
     @FindBy(xpath = "//*[@class=\"login\"]")
     WebElement signInButton;
 
+    @FindBy(className = "account")
+    WebElement headerUserNameButton;
+
     public void clickOnContactUsLink() {
         contactUsLink.click();
     }
@@ -43,5 +46,9 @@ public class TopMenuPage extends BasePage {
 
     public void clickOnSignInButton() {
         signInButton.click();
+    }
+
+    public String getHeaderUserName() {
+        return headerUserNameButton.getText();
     }
 }
