@@ -24,6 +24,9 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"center_column\"]//*[@class=\"product_list grid row\"]//*[@class=\"right-block\"]//*[@class=\"price product-price\"]")
     List<WebElement> searchedProductsPrices;
 
+    @FindBy(className = "bt_compare")
+    List<WebElement> compareButtonsList;
+
     public String getSearchResultsTitle() {
         return searchResultsTitle.getText();
     }
@@ -47,5 +50,9 @@ public class SearchResultsPage extends BasePage {
                 .map(el -> el.replaceAll("[^0-9.]", ""))
                 .map(BigDecimal::new)
                 .collect(Collectors.toList());
+    }
+
+    public boolean areCompareButtonsEnabled() {
+        return areAllWebElementsEnabled(compareButtonsList);
     }
 }

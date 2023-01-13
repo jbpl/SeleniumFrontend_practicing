@@ -43,5 +43,6 @@ public class SearchQueryTest extends BaseTest {
 
         List<BigDecimal> pricesList = searchResultsPage.getProductPricesList();
         assertThat(searchResultsPage.isEachPriceGreaterThanZero(pricesList)).isTrue();
+        assertThat(searchResultsPage.areCompareButtonsEnabled()).isFalse();
     }
 }

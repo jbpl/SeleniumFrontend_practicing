@@ -18,6 +18,9 @@ public class WomenPage extends BasePage {
     @FindBy(xpath = "//div[@class=\"right-block\"]//span[@class=\"price product-price\"]")
     List<WebElement> productPricesList;
 
+    @FindBy(className = "bt_compare")
+    List<WebElement> compareButtonsList;
+
     public List<BigDecimal> getProductPricesList() {
         wait.until(ExpectedConditions.visibilityOfAllElements(productPricesList));
 
@@ -26,5 +29,9 @@ public class WomenPage extends BasePage {
                 .map(el -> el.replaceAll("[^0-9.]", ""))
                 .map(BigDecimal::new)
                 .collect(Collectors.toList());
+    }
+
+    public boolean areCompareButtonsEnabled() {
+        return areAllWebElementsEnabled(compareButtonsList);
     }
 }

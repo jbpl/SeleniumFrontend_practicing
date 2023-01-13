@@ -35,4 +35,9 @@ public class BasePage {
         }
         return isDisplayed;
     }
+
+    public boolean areAllWebElementsEnabled(List<WebElement> webElementsList) {
+        return webElementsList.stream()
+                .allMatch(el -> el.isEnabled());
+    }
 }

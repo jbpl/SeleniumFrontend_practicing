@@ -33,5 +33,6 @@ public class WomenPageTest extends BaseTest {
 
         List<BigDecimal> pricesList = womenPage.getProductPricesList();
         assertThat(womenPage.isEachPriceGreaterThanZero(pricesList)).isTrue();
+        assertThat(womenPage.areCompareButtonsEnabled()).isFalse();
     }
 }

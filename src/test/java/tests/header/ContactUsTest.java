@@ -2,7 +2,6 @@ package tests.header;
 
 import enums.ContactUsMessageSubject;
 import model.ContactUsMessage;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +9,8 @@ import pages.ContactUsFormPage;
 import pages.TopMenuPage;
 import tests.BaseTest;
 import utils.PageTitleUtils;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ContactUsTest extends BaseTest {
     private TopMenuPage topMenuPage;
@@ -19,7 +20,7 @@ class ContactUsTest extends BaseTest {
     public void setupTest() {
         driver = new ChromeDriver();
         driver.get(BASE_URL);
-        Assertions.assertThat(driver.getTitle()).isEqualTo(PageTitleUtils.HOME_PAGE_TITLE);
+        assertThat(driver.getTitle()).isEqualTo(PageTitleUtils.HOME_PAGE_TITLE);
 
         topMenuPage = new TopMenuPage(driver);
         contactUsFormPage = new ContactUsFormPage(driver);
@@ -30,7 +31,8 @@ class ContactUsTest extends BaseTest {
         topMenuPage.clickOnContactUsLink();
         contactUsFormPage.clickOnSendButton();
 
-        Assertions.assertThat(contactUsFormPage.isRedAlertBoxDisplayed()).isTrue();
+        assertThat(contactUsFormPage.isAttachFileButtonActive()).isTrue();
+        assertThat(contactUsFormPage.isRedAlertBoxDisplayed()).isTrue();
     }
 
     @Test
@@ -39,7 +41,7 @@ class ContactUsTest extends BaseTest {
         contactUsFormPage.enterEmail("jb@pl.pl");
         contactUsFormPage.clickOnSendButton();
 
-        Assertions.assertThat(contactUsFormPage.isRedAlertBoxDisplayed()).isTrue();
+        assertThat(contactUsFormPage.isRedAlertBoxDisplayed()).isTrue();
     }
 
     @Test
@@ -53,6 +55,6 @@ class ContactUsTest extends BaseTest {
         message.setMessageText("Cancel");
 
         contactUsFormPage.sendValidContactUsForm(message);
-        Assertions.assertThat(contactUsFormPage.isGreenAlertBoxDisplayed()).isTrue();
+        assertThat(contactUsFormPage.isGreenAlertBoxDisplayed()).isTrue();
     }
 }

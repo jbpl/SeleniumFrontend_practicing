@@ -26,6 +26,7 @@ public class CreateAnAccountPage extends BasePage {
     @FindBy(id = "submitAccount")
     WebElement registerAccountButton;
 
+
     public void clickOnGender1Button() {
         wait.until(ExpectedConditions.visibilityOfAllElements(gender1Checkbox));
         gender1Checkbox.click();

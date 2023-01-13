@@ -34,6 +34,9 @@ public class ContactUsFormPage extends BasePage {
     @FindBy(className = "alert-success")
     WebElement greenAlertBox;
 
+    @FindBy(id = "fileUpload")
+    WebElement attachFileButton;
+
     public void clickOnSendButton() {
         sendButton.click();
     }
@@ -58,5 +61,9 @@ public class ContactUsFormPage extends BasePage {
         messageBox.sendKeys(message.getMessageText());
 
         sendButton.click();
+    }
+
+    public boolean isAttachFileButtonActive() {
+        return attachFileButton.isEnabled();
     }
 }
