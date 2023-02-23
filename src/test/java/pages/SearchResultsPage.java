@@ -27,6 +27,9 @@ public class SearchResultsPage extends BasePage {
     @FindBy(className = "bt_compare")
     List<WebElement> compareButtonsList;
 
+    @FindBy(css = ".button.ajax_add_to_cart_button.btn.btn-default")
+    WebElement addToCartButton;
+
     public String getSearchResultsTitle() {
         return searchResultsTitle.getText();
     }
@@ -54,5 +57,9 @@ public class SearchResultsPage extends BasePage {
 
     public boolean areCompareButtonsEnabled() {
         return areAllWebElementsEnabled(compareButtonsList);
+    }
+
+    public void clickOnAddToCartButton() {
+        addToCartButton.click();
     }
 }
