@@ -32,7 +32,7 @@ public class SearchQueryTest extends BaseTest {
     @Test
     void shouldReturnCorrectSearchResults() {
 
-        String searchedTerm = SearchQueryUtils.PROPER_BLOUSE_SEARCH;
+        String searchedTerm = SearchQueryUtils.PROPER_ONE_PRODUCT_SEARCH;
 
         topMenuPage.enterSearchedText(searchedTerm);
         topMenuPage.clickOnSearchButton();
