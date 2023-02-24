@@ -22,6 +22,9 @@ public class CartLayerPage extends BasePage {
     @FindBy(id = "layer_cart_product_quantity")
     WebElement productQuantity;
 
+    @FindBy(css = "#layer_cart .ajax_block_cart_total")
+    WebElement cartTotalPrice;
+
     public boolean isIconCheckVisible() {
         return isElementDisplayed(iconCheck);
     }
@@ -32,5 +35,13 @@ public class CartLayerPage extends BasePage {
 
     public int getProductQuantity() {
         return Integer.parseInt(productQuantity.getText());
+    }
+
+    public String getProductName() {
+        return productTitle.getText();
+    }
+
+    public double getCartTotalPrice(){
+        return Double.parseDouble(cartTotalPrice.getText().replaceAll("[^0-9.]", ""));
     }
 }

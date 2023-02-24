@@ -42,5 +42,7 @@ public class CartLayerTest extends BaseTest {
         assertThat(cartLayerPage.isIconCheckVisible()).isTrue();
         assertThat(cartLayerPage.getProductColumnText()).contains(CartLayerUtils.SUCCESS_RESULT_STRING);
         assertThat(cartLayerPage.getProductQuantity()).isEqualTo(1);
+        assertThat(cartLayerPage.getProductName()).isEqualTo(SearchQueryUtils.PROPER_BLOUSE_SEARCH);
+        assertThat(cartLayerPage.getCartTotalPrice()).isPositive();
     }
 }
