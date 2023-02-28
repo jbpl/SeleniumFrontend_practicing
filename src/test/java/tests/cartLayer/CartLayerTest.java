@@ -23,6 +23,7 @@ public class CartLayerTest extends BaseTest {
     public void setupTest() {
         driver = new ChromeDriver();
         driver.get(BASE_URL);
+//        driver.manage().window().maximize();
         assertThat(driver.getTitle()).isEqualTo(PageTitleUtils.HOME_PAGE_TITLE);
 
         cartLayerPage = new CartLayerPage(driver);
@@ -52,6 +53,7 @@ public class CartLayerTest extends BaseTest {
 
         topMenuPage.enterSearchedText(searchedTerm);
         topMenuPage.clickOnSearchButton();
- // //
+
+        searchResultsPage.addSeveralItemsToCart(3);
     }
 }

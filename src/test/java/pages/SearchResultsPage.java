@@ -2,8 +2,11 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import tests.BaseTest;
+
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -29,6 +32,12 @@ public class SearchResultsPage extends BasePage {
 
     @FindBy(css = ".button.ajax_add_to_cart_button.btn.btn-default")
     WebElement addToCartButton;
+
+    @FindBy(css = ".button.ajax_add_to_cart_button.btn.btn-default")
+    List<WebElement> listOfAddToCartButtons;
+
+    @FindBy(className = "cross")
+    WebElement closeCartLayerButton;
 
     public String getSearchResultsTitle() {
         return searchResultsTitle.getText();
@@ -61,5 +70,20 @@ public class SearchResultsPage extends BasePage {
 
     public void clickOnAddToCartButton() {
         addToCartButton.click();
+    }
+
+    public void addSeveralItemsToCart(int numberOfItemsToAdd) {
+        for (int i = 0; i < numberOfItemsToAdd; i++) {
+            wait.until(ExpectedConditions.visibilityOfAllElements(listOfAddToCartButtons));
+            listOfAddToCartButtons.get(i).click();
+
+            wait.until(ExpectedConditions.elementToBeClickable(closeCartLayerButton));
+            closeCartLayerButton.click();
+            // //similar to this
+            // //ActionChains(driver).move_to_element(closeCartLayerButton).click().perform()
+            // //Actions actions = new Actions(BaseTest.driver);
+            // //Actions actions = new Actions(getDriver());
+
+        }
     }
 }
